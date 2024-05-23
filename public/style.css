@@ -1,0 +1,97 @@
+
+
+body{
+  width:100vw;
+  height:100vh;
+  position:relative;
+  margin:0px;
+  opacity:0;
+  display:none;
+  pointer-events:none;
+}
+
+img {
+  image-rendering: pixelated;
+
+}
+
+button {
+  cursor:pointer;
+}
+
+.entryway {
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  margin:auto;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%)
+
+}
+.heaven{
+  visibility:hidden;
+  pointer-events:none;
+  width:100vw;
+  height:100vh;
+  z-index:1;
+  position:absolute;
+  top:0px;
+  left:0px;
+  background:#F0FDFF;
+  opacity:0;
+  transition: 3s  opacity;
+  text-align:center;
+  overflow:hidden;
+  
+ background: radial-gradient(circle at 50% 50%, #FFF 0%, #FFFAE2 13.5%, #D7F5F9 100%);}
+
+.heaven-overlay{
+  position:absolute;
+  width:100vw;
+  height:100vh;
+  z-index:2;
+  opacity:0;
+  background: radial-gradient(circle at 50% 50%, #E9FFFF 0%, #C8E9EE 100%);
+}
+.othercursor{
+  display:none;
+  position:fixed;
+  top:0px;
+  left:0px;
+}
+
+.text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    transform: translate(-50%,-50%);
+    pointer-events:none;
+}
+
+.cloud{
+  font-size:16px;
+  position:absolute;
+  z-index:-1;
+/*   animation: cloudAnimation infinite linear; */
+
+  opacity:.6;
+}
+
+@keyframes cloudAnimation {
+  0%   {transform:translateX(-50%)}
+  100% {transform:translateX(50%)}
+}
+
+/* @keyframes cloudAnimation {
+  0%   {transform:translateY(-6px)}
+  100% {transform:translateY(6px)}
+} */
+#timer{
+  top: 12px;
+  position: relative;
+  font-size: 48px;
+  color: #C8E9EE;
+}
