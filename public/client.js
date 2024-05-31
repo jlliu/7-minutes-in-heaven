@@ -18,6 +18,8 @@ let body = document.querySelector("body");
 let heavenMessage = document.querySelector(".message");
 let timer = document.querySelector("#timer");
 
+let otherEnteredEvent = new Event("otherEnteredEvent");
+
 doorButton.addEventListener("click", function () {
   //decide to enter
   socket.emit("attemptEnter");
@@ -67,6 +69,7 @@ socket.on("count", (count) => {
       othercursor.style.display = "block";
       heavenMessage.innerHTML = "someone is here with you";
       if (!timerStarted) {
+        document.dispatchEvent(otherEnteredEvent);
         timerStarted = true;
         let startTime = new Date().getTime();
         interval = setInterval(function () {
@@ -155,7 +158,8 @@ for (var i = 0; i < 8; i++) {
 }
 
 // Reset after 10 minutes
-let resetTime = 600;
+let resetTime = 10;
+// let resetTime = 600;
 
 function setIdle(cb, seconds) {
   var timer;
@@ -164,14 +168,12 @@ function setIdle(cb, seconds) {
     clearInterval(timer);
     timer = setTimeout(cb, interval);
   }
-  ["keypress", "click", "mousemove"].forEach((event) =>
+  ["keypress", "click", "mousemove", "otherEnteredEvent"].forEach((event) =>
     document.addEventListener(event, refresh)
   );
   refresh();
 }
 
 setIdle(function () {
-  if (entered) {
-    location.href = "/";
-  }
+  location.href = "/";
 }, resetTime);
