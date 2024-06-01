@@ -173,6 +173,6 @@ function setIdle(cb, seconds) {
   refresh();
 }
 
-setIdle(function () {
-  location.href = "/";
-}, resetTime);
+// setIdle(function () {
+//   location.href = "/";
+// }, resetTime);
