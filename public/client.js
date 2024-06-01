@@ -60,6 +60,13 @@ function msToTime(duration) {
   return minutes + ":" + seconds;
 }
 
+function leaveRoom() {
+  othercursor.style.display = "none";
+  heavenDiv.style.opacity = 0;
+  heavenDiv.style.pointerEvents = "none";
+  heavenDiv.style.visibility = "hidden";
+}
+
 // update UI based on current count
 socket.on("count", (count) => {
   console.log("receiving count: " + count);
@@ -78,12 +85,12 @@ socket.on("count", (count) => {
           let time = maxTime - (newTime - startTime);
           if (time <= 0) {
             //Kick everyone out!
-            socket.emit("timeOver");
-            timerStarted = false;
-            clearInterval(interval);
             entered = false;
             console.log("entered is false");
             leaveRoom();
+            timerStarted = false;
+            clearInterval(interval);
+            socket.emit("timeOver");
           }
           timer.innerHTML = msToTime(time);
         }, 50);
@@ -109,13 +116,6 @@ socket.on("count", (count) => {
     }
   }
 });
-
-function leaveRoom() {
-  othercursor.style.display = "none";
-  heavenDiv.style.opacity = 0;
-  heavenDiv.style.pointerEvents = "none";
-  heavenDiv.style.visibility = "hidden";
-}
 
 socket.on("othermove", (data) => {
   othercursor.style.left = `${data.x}px`;
