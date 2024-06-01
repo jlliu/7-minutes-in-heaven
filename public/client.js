@@ -67,6 +67,13 @@ function leaveRoom() {
   heavenDiv.style.visibility = "hidden";
 }
 
+// make sure everyone is kicked out properly!
+socket.on("kickOut", () => {
+  console.log("GETTING KICKED OUT");
+  entered = false;
+  leaveRoom();
+}
+
 // update UI based on current count
 socket.on("count", (count) => {
   console.log("receiving count: " + count);
@@ -95,7 +102,7 @@ socket.on("count", (count) => {
           timer.innerHTML = msToTime(time);
         }, 50);
       }
-    } else {
+    } else if (count == 1) {
       othercursor.style.display = "none";
       heavenMessage.innerHTML = "no one else is here yet";
       timer.innerHTML = "7:00";
