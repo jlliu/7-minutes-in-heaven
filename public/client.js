@@ -48,7 +48,7 @@ socket.on("enterAccepted", (count) => {
 let timerStarted = false;
 let interval;
 
-let maxTime = 30000;
+let maxTime = 420000;
 
 function msToTime(duration) {
   var seconds = parseInt((duration / 1000) % 60),
@@ -170,7 +170,7 @@ for (var i = 0; i < 8; i++) {
 }
 
 // Reset after 10 minutes
-let resetTime = 60;
+let resetTime = 600;
 
 function setIdle(cb, seconds) {
   var timer;
