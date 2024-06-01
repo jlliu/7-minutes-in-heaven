@@ -72,7 +72,7 @@ socket.on("kickOut", () => {
   console.log("GETTING KICKED OUT");
   entered = false;
   leaveRoom();
-}
+});
 
 // update UI based on current count
 socket.on("count", (count) => {
