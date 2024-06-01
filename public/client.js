@@ -83,6 +83,7 @@ socket.on("count", (count) => {
             clearInterval(interval);
             entered = false;
             console.log("entered is false");
+            leaveRoom();
           }
           timer.innerHTML = msToTime(time);
         }, 50);
@@ -95,10 +96,7 @@ socket.on("count", (count) => {
       clearInterval(interval);
     }
   } else {
-    othercursor.style.display = "none";
-    heavenDiv.style.opacity = 0;
-    heavenDiv.style.pointerEvents = "none";
-    heavenDiv.style.visibility = "hidden";
+    leaveRoom();
     // update UI of waiting room
     if (count >= 2) {
       door.src = "door-close.png";
@@ -111,6 +109,13 @@ socket.on("count", (count) => {
     }
   }
 });
+
+function leaveRoom() {
+  othercursor.style.display = "none";
+  heavenDiv.style.opacity = 0;
+  heavenDiv.style.pointerEvents = "none";
+  heavenDiv.style.visibility = "hidden";
+}
 
 socket.on("othermove", (data) => {
   othercursor.style.left = `${data.x}px`;
@@ -173,6 +178,6 @@ function setIdle(cb, seconds) {
   refresh();
 }
 
-// setIdle(function () {
-//   location.href = "/";
-// }, resetTime);
+setIdle(function () {
+  location.href = "/";
+}, resetTime);
