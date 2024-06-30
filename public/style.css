@@ -45,7 +45,8 @@ button {
   text-align:center;
   overflow:hidden;
 
- background: radial-gradient(circle at 50% 50%, #FFF 0%, #fff7cf 13.5%, #bee9ef 100%);}
+  background: radial-gradient(circle at 50% 50%, #FFF 0%, #FFFAE2 13.5%, #D7F5F9 100%);
+}
 
 .heaven-overlay{
   position:absolute;
@@ -93,5 +94,5 @@ button {
   top: 12px;
   position: relative;
   font-size: 48px;
-  color: #aadde4;
+  color: #C8E9EE;
 }
