@@ -8,6 +8,7 @@ body{
   opacity:0;
   display:none;
   pointer-events:none;
+  background:white;
 }
 
 img {
