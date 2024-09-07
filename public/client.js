@@ -174,6 +174,7 @@ for (var i = 0; i < 8; i++) {
 
 // Reset after 10 minutes
 let resetTime = 600;
+resetTime = 10;
 
 function setIdle(cb, seconds) {
   var timer;
